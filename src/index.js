@@ -9,7 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 //Cài đặt redux
 import { Provider } from "react-redux";
 import { store } from "./redux/configStore";
-import BTGioHang from "./pages/CyberPhone/BTGioHang";
+import BookingTicket from "./pages/BookingTicket/BookingTicket";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -18,8 +18,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="" element={<App />}>
-        <Route path="/cyberphone" element={<BTGioHang />}></Route>
-           
+        <Route path="/bookingticket" element={<BookingTicket />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

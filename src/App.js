@@ -6,8 +6,8 @@ function App() {
   return (
     <div className="App">
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a className="navbar-brand" href="#">
-          REACTJS
+        <a className="navbar-brand" href="#" style={{color:'yellow'}}>
+          MOVIE INN
         </a>
         <button
           className="navbar-toggler d-lg-none"
@@ -21,15 +21,22 @@ function App() {
         <div className="collapse navbar-collapse" id="collapsibleNavId">
           <ul className="navbar-nav me-auto mt-2 mt-lg-0">
           <li className="nav-item active">
-              <NavLink className="nav-link" to="/cyberphone">
-                CyberPhone
+              <NavLink className="nav-link" to="/bookingticket">
+                Booking Ticket
               </NavLink>
             </li>
-            
-            
-            
+            <li className="nav-item ">
+              <NavLink className="nav-link" to="/">
+                Promotion 
+              </NavLink>
+            </li>
+            <li className="nav-item ">
+              <NavLink className="nav-link" to="/">
+                News 
+              </NavLink>
+            </li>
           </ul>
-          <form className="d-flex my-2 my-lg-0">
+          {/* <form className="d-flex my-2 my-lg-0">
             <input
               className="form-control me-sm-2"
               type="text"
@@ -41,7 +48,7 @@ function App() {
             >
               Search
             </button>
-          </form>
+          </form> */}
         </div>
       </nav>
       <Outlet />
