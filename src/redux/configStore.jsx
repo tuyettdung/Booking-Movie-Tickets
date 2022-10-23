@@ -1,9 +1,10 @@
 import { createStore, combineReducers } from "redux";
+import bookingTicketReducer from "./reducers/bookingTicketReducer";
 
 
 
 const rootReducer = combineReducers({
-    //Nơi chứa các state của ứng dụng
+  bookingTicketReducer:bookingTicketReducer
    
   });
   

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from "react-redux";
 
-export default class ThongTinGhe extends Component {
+ class ThongTinGhe extends Component {
   render() {
     return (
       <div>
@@ -13,30 +14,50 @@ export default class ThongTinGhe extends Component {
       </div>
 
       <div className='mt-5 '>
-        <table className="table" border={2} >
+        <table className="table bd-warning" border={2} >
           <thead>
-            <tr style={{fontSize:'18px', fontFamily:'sans-serif',color:'orange'}}>
+            <tr style={{fontSize:'20px', fontFamily:'sans-serif',color:'white'}}>
               <th>Số ghế</th>
               <th>Giá</th>
-              <th>Hủy</th>
+              <th></th>
             </tr>
           </thead>
-          <tbody>
-          <tr>
-              <td>Số ghế</td>
-              <td>Gía</td>
-              <td>Hủy</td>
+          <tbody className='text-warning' style={{fontSize:'18px'}}>
+          {this.props.danhSachGheDangDat.map((gheDangDat,index)=>{
+            return <tr key={index}>
+              <td>{gheDangDat.soGhe}</td>
+              <td>{gheDangDat.gia.toLocaleString()}</td>
+              <td><button onClick={()=>{
+                this.props.dispatch({
+                  type:'HUY_GHE',
+                  soGhe: gheDangDat.soGhe
+                })
+              }}>Hủy</button></td>
             </tr>
-            <tr>
-              <td>Số ghế</td>
-              <td>Gía</td>
-              <td>Hủy</td>
-            </tr>
-            
+          })}
           </tbody>
+          <tfoot>
+            <tr className='text-danger bg-light'>
+              <td></td>
+              <td>Tổng tiền</td>
+              <td>{this.props.danhSachGheDangDat.reduce((tongTien,gheDangDat,index)=>{
+                return tongTien += gheDangDat.gia;
+
+              },0).toLocaleString()}</td>
+           
+            </tr>
+          </tfoot>
         </table>
       </div>
       </div>
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    danhSachGheDangDat:state.bookingTicketReducer.danhSachGheDangDat
+  }
+}
+
+export default connect (mapStateToProps,null)(ThongTinGhe);
